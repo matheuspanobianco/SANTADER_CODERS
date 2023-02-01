@@ -2,6 +2,8 @@ package Aula3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class ExerciseInClass3 {
@@ -21,12 +23,10 @@ public class ExerciseInClass3 {
         que receba um número e retorne o Dobro daquele número;
          */
 
-//        System.out.println("\nExercicio 2:\n");
-//        List<Double> numeros2 = List.of(1.2, 4.0, 7.01, 22.0, 417.91);
-//        List<Double> numerosDuplicados = duplicaNumero(numeros2, (numero2) -> (numero2 * 2));
-//        System.out.println(numerosDuplicados);
-
-
+        System.out.println("\nExercicio 2:\n");
+        List<Integer> numeros2 = List.of(1, 4, 7, 22, 417);
+        List<Integer> numerosDuplicados = duplicaNumero(numeros2, (numero2) -> numero2 * 2);
+        System.out.println(numerosDuplicados);
 
 
         /*
@@ -34,8 +34,9 @@ public class ExerciseInClass3 {
         para imprimir elementos de uma lista;
          */
 
-//        System.out.println("\nExercicio 3:\n");
-//        aves.forEach((ave) -> System.out.println(ave.getNome()));
+        System.out.println("\nExercicio 3:\n");
+        List<String> nomes = List.of("Marcelo", "Matheus", "Ana", "Carlos");
+        imprimeNomes(nomes, (nome) -> System.out.println(nome));
 
         /*
         4. Escreva um método utilizando Supplier,
@@ -55,22 +56,20 @@ public class ExerciseInClass3 {
         return numerosPares;
     }
 
-//    public static void duplicaNumero(List<Double> numeros2, Consumer<Ave> consumidor) {
-//
-//        for (Ave ave : aves) {
-//            consumidor.accept(ave);
-//        }
-//
-//    }
-//
-//    public static List<String> transformarObjAve(List<Ave> aves, Function<Ave, String> transformador) {
-//        List<String> nomesAves = new ArrayList<>();
-//
-//        for (Ave ave : aves) {
-//            nomesAves.add(transformador.apply(ave));
-//        }
-//
-//        return nomesAves;
-//    }
+    public static void imprimeNomes(List<String> nomes, Consumer<String> consumidor) {
+        for (String nome : nomes) {
+            consumidor.accept(nome);
+        }
+    }
+
+    public static List<Integer> duplicaNumero(List<Integer> numeros2, Function<Integer, Integer> transformador) {
+        List<Integer> numeros2Duplicados = new ArrayList<>();
+
+        for (Integer numero2 : numeros2) {
+            numeros2Duplicados.add(transformador.apply(numero2));
+        }
+
+        return numeros2Duplicados;
+    }
 
 }
