@@ -1,10 +1,12 @@
 package Aula3;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class ExerciseInClass3 {
     public static void main(String[] args) {
@@ -17,6 +19,9 @@ public class ExerciseInClass3 {
         List<Integer> numeros = List.of(1, 4, 7, 22, 417);
         List<Integer> numerosPares = verificaPar(numeros, (numero) -> numero % 2 == 0);
         System.out.println(numerosPares);
+        //maneira direta
+        Predicate<Integer> numeroEhPar = (numeroInserido) -> numeroInserido % 2 == 0;
+        System.out.println(numeroEhPar.test(2));
 
         /*
         2. Escreva um método utilizando Function,
@@ -27,7 +32,9 @@ public class ExerciseInClass3 {
         List<Integer> numeros2 = List.of(1, 4, 7, 22, 417);
         List<Integer> numerosDuplicados = duplicaNumero(numeros2, (numero2) -> numero2 * 2);
         System.out.println(numerosDuplicados);
-
+        //maneira direta
+        Function<Integer, Integer> numeroDobrado = (numeroInserido) -> numeroInserido * 2;
+        System.out.println(numeroDobrado.apply(2));
 
         /*
         3. Escreva um método utilizando Consumer,
@@ -37,11 +44,17 @@ public class ExerciseInClass3 {
         System.out.println("\nExercicio 3:\n");
         List<String> nomes = List.of("Marcelo", "Matheus", "Ana", "Carlos");
         imprimeNomes(nomes, (nome) -> System.out.println(nome));
-
+        //maneira direta
+        Consumer<List<String>> imprimeElementosLista = (listaNomes) -> System.out.println(listaNomes.toString());
+        imprimeElementosLista.accept(nomes);
         /*
         4. Escreva um método utilizando Supplier,
          para retornar uma data com o LocalDate.now();
          */
+
+        System.out.println("\nExercicio 4:\n");
+        Supplier<LocalDate> forneceLocalDate = () -> LocalDate.now();
+        System.out.println(forneceLocalDate.get());
 
 
     }
